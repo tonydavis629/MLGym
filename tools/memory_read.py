@@ -1,5 +1,3 @@
-# Copyright (c) Meta Platforms, Inc. and affiliates.
-
 #!/home/agent/miniconda3/envs/mlgym_generic/bin/python
 
 # @yaml
@@ -12,12 +10,13 @@
 #       required: true
 
 import argparse
-from transformers import AutoTokenizer, AutoModel
-import torch
-from sklearn.metrics.pairwise import cosine_similarity
-import numpy as np
 import json
 from pathlib import Path
+
+import numpy as np
+import torch
+from sklearn.metrics.pairwise import cosine_similarity
+from transformers import AutoModel, AutoTokenizer
 
 # initialize tokenizer and model
 tokenizer = AutoTokenizer.from_pretrained('sentence-transformers/all-MiniLM-L6-v2')

@@ -1,5 +1,3 @@
-# Copyright (c) Meta Platforms, Inc. and affiliates.
-
 # @yaml
 # signature: submit
 # docstring: submits your current code and terminates the session

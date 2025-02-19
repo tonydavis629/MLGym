@@ -1,5 +1,3 @@
-# Copyright (c) Meta Platforms, Inc. and affiliates.
-
 # @yaml
 # signature: search_dir <search_term> [<dir>]
 # docstring: searches for search_term in all files in dir. If dir is not provided, searches in the current directory

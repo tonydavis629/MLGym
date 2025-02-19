@@ -1,8 +1,9 @@
-# Copyright (c) Meta Platforms, Inc. and affiliates.
-
 #!/usr/bin/env python3
 
-"""This helper command is used to print flake8 output
+"""
+Copyright (c) Meta Platforms, Inc. and affiliates.
+
+This helper command is used to print flake8 output
 
 Usage:
     python _split_string.py <flake8_output>

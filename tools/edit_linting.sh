@@ -1,5 +1,3 @@
-# Copyright (c) Meta Platforms, Inc. and affiliates.
-
 # @yaml
 # signature: |-
 #   edit <start_line>:<end_line>

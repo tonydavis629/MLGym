@@ -1,5 +1,3 @@
-# Copyright (c) Meta Platforms, Inc. and affiliates.
-
 #!/home/agent/miniconda3/envs/mlgym_generic/bin/python
 
 # @yaml
@@ -11,12 +9,12 @@
 #       description: content to be saved to persistent memory
 #       required: true
 
-from transformers import AutoTokenizer, AutoModel
-import torch
+import argparse
 import json
 from pathlib import Path
-import argparse
 
+import torch
+from transformers import AutoModel, AutoTokenizer
 
 # initialize model and tokenizer
 MODEL_NAME = 'sentence-transformers/all-MiniLM-L6-v2'

@@ -1,6 +1,6 @@
-# Copyright (c) Meta Platforms, Inc. and affiliates.
-
 #!/bin/bash
+
+# Copyright (c) Meta Platforms, Inc. and affiliates.
 
 # Initialize conda
 __conda_setup="$('/home/agent/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"

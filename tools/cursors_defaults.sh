@@ -1,5 +1,3 @@
-# Copyright (c) Meta Platforms, Inc. and affiliates.
-
 _reset_cursors() {
     export START_CURSOR=1
     export END_CURSOR=1

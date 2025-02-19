@@ -1,5 +1,3 @@
-# Copyright (c) Meta Platforms, Inc. and affiliates.
-
 # @yaml
 # signature: validate
 # docstring: validates your current submission file and returns the metrics on test set

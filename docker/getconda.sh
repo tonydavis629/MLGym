@@ -1,10 +1,11 @@
-# Copyright (c) Meta Platforms, Inc. and affiliates.
-
 #!/usr/bin/env bash
+
+# Copyright (c) Meta Platforms, Inc. and affiliates.
 
 # Helper script to get the right conda version inside of the container
 # This logic is put inside of the container rather than in the build script
 # so that we can easily do multi-platform builds
+
 
 arch=$1
 echo "arch", $arch

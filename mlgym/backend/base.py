@@ -15,7 +15,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, fields
 
-from pyparsing import Any
+from typing import Any
 from simple_parsing.helpers.fields import field
 from simple_parsing.helpers.serialization.serializable import (
     FrozenSerializable,
@@ -80,7 +80,10 @@ class APIStats(Serializable):
             raise TypeError(msg)
 
         return APIStats(
-            **{field.name: getattr(self, field.name) + getattr(other, field.name) for field in fields(self)},
+            **{
+                field.name: getattr(self, field.name) + getattr(other, field.name)
+                for field in fields(self)
+            },
         )
 
     def replace(self, other: APIStats) -> APIStats:
@@ -100,13 +103,15 @@ class APIStats(Serializable):
             msg = "Can only replace APIStats with APIStats"
             raise TypeError(msg)
 
-        return APIStats(**{field.name: getattr(other, field.name) for field in fields(self)})
+        return APIStats(
+            **{field.name: getattr(other, field.name) for field in fields(self)}
+        )
 
 
 class BaseModel:
     """
     Base class for all model implementations.
-    
+
     Provides common functionality for model interaction, cost tracking,
     and limit enforcement. Specific model implementations (OpenAI, Azure, etc.)
     should inherit from this class.
@@ -140,7 +145,9 @@ class BaseModel:
 
         # Map `model_name` to API-compatible name `api_model`
         self.api_model = (
-            self.SHORTCUTS[self.args.model_name] if self.args.model_name in self.SHORTCUTS else self.args.model_name
+            self.SHORTCUTS[self.args.model_name]
+            if self.args.model_name in self.SHORTCUTS
+            else self.args.model_name
         )
 
         # Map model name to metadata (cost, context info)
@@ -178,7 +185,9 @@ class BaseModel:
         else:
             self.stats = other
 
-    def update_stats(self, input_tokens: int, output_tokens: int, cost: float = 0.0) -> float:
+    def update_stats(
+        self, input_tokens: int, output_tokens: int, cost: float = 0.0
+    ) -> float:
         """
         Update API statistics with new usage information.
 
@@ -200,8 +209,10 @@ class BaseModel:
                 + self.model_metadata["cost_per_output_token"] * output_tokens
             )
         elif self.model_metadata is None:
-            self.logger.warning("Model provider is not litellm and model metadata is not set. Cost limit and context exceeded errors will not be raised.")
-            
+            self.logger.warning(
+                "Model provider is not litellm and model metadata is not set. Cost limit and context exceeded errors will not be raised."
+            )
+
         self.stats.total_cost += cost
         self.stats.task_cost += cost
         self.stats.tokens_sent += input_tokens
@@ -224,12 +235,16 @@ class BaseModel:
 
         # Check whether total cost or instance cost limits have been exceeded
         if 0 < self.args.total_cost_limit <= self.stats.total_cost:
-            self.logger.warning(f"Cost {self.stats.total_cost:.2f} exceeds limit {self.args.total_cost_limit:.2f}")
+            self.logger.warning(
+                f"Cost {self.stats.total_cost:.2f} exceeds limit {self.args.total_cost_limit:.2f}"
+            )
             msg = "Total cost limit exceeded"
             raise CostLimitExceededError(msg)
 
         if 0 < self.args.per_instance_cost_limit <= self.stats.task_cost:
-            self.logger.warning(f"Cost {self.stats.task_cost:.2f} exceeds limit {self.args.per_instance_cost_limit:.2f}")
+            self.logger.warning(
+                f"Cost {self.stats.task_cost:.2f} exceeds limit {self.args.per_instance_cost_limit:.2f}"
+            )
             msg = "Instance cost limit exceeded"
             raise CostLimitExceededError(msg)
         return cost
