@@ -1,7 +1,6 @@
-Copyright (c) Meta Platforms, Inc. and affiliates.
-
 #!/bin/bash
 
+# Copyright (c) Meta Platforms, Inc. and affiliates.
 # Define ls aliases
 alias ll='ls -alF'
 alias la='ls -A'

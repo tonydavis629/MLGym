@@ -1,5 +1,3 @@
-# Copyright (c) Meta Platforms, Inc. and affiliates.
-
 #!/usr/bin/env python3
 
 # @yaml
@@ -12,13 +10,14 @@
 #       required: true
 
 import argparse
-import requests
-import tempfile
 import json
-from pypdf import PdfReader
+import os
+import tempfile
+
 import pymupdf
 import pymupdf4llm
-import os
+import requests
+from pypdf import PdfReader
 
 
 def download_pdf(pdf_url: str, output_filename: str) -> None:
