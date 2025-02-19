@@ -1,0 +1,8 @@
+torch
+nltk
+pycocotools
+torchvision
+pillow
+pandas
+pyarrow
+fastparquet

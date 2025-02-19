@@ -1,0 +1,15 @@
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+
+data_path: data/languageModelingFineWeb/data
+description: FineWeb dataset comprising binary files. The training split contains 2.4B tokens.
+is_local: true
+name: FineWebDataset
+test_split:
+  file_regex: ./data/fineweb10B/fineweb_test*
+  name: test
+train_split:
+  file_regex: ./data/fineweb10B/fineweb_train*
+  name: train
+valid_split:
+  file_regex: ./data/fineweb10B/fineweb_valid*
+  name: valid

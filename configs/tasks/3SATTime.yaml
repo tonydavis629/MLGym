@@ -1,0 +1,43 @@
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+
+id: 3SATTime
+name: 3 SAT Heuristic Generation
+description: |-
+  The objective is to design a heuristic for a DPLL 3-SAT solver, aiming to select variables and assign boolean values in a way that achieves a solution in the LEAST AMOUNT OF TIME.
+  Specifically, the performance metric is to reduce solving time by reducing the number of recursive calls and backtracks in the solver.
+  The function should favor decisions that maximize clause satisfaction, minimize conflicts, and help detect conflicts early when possible. A heuristic function that consistently improves the solvers efficiency in finding solutions or proving unsatisfiability across various problem instances is the end goal.
+
+  An example heuristic is given to you in the `heuristic.py` file. You have to implement your changes without chaning the function name or signature.
+
+  The heuristic_fn has two blocks. Firstly, the variable selection which requires designing
+  efficient heuristics to determine selection order to improve upon the objective.
+  The second block is to assign a value to the variable such that the number of backtracks, and
+  hence the time to solve the formula is reduced.
+  Note, that variables are absolute values of literals. The output of the heuristic function should be a single integer representing the next variable to be assigned and the boolean value to be assigned to the variable.
+
+  INSTRUCTIONS:
+  1. You may find it helpful to prioritize certain factors (e.g., number of occurrences of a variable or variable frequency) by introducing weighting parameters.
+  2. If you use transformations in the heuristic, include adjustable parameters (e.g., temperature, decay factor) to control their influence on variable selection. Each transformation parameter should be named clearly and set to ensure balanced impact within the heuristic.
+  3. Ensure the type of each input variable is correctly specified.
+  4. Most importantly, the heuristic function must be restricted to arguments accessible within the solver. Do not introduce new inputs or assume arguments that are not directly available in the SAT solver environment.
+  5. Avoid contradictory heuristic factors; make sure that any prioritization logic aligns with the overall goal of minimizing backtracking and maximizing early clause satisfaction in terms of wall clock time.
+  6. When conflicts arise, ensure that these factors are given precedence in variable selection. This means that any variable directly involved in potential conflicts or unit clauses should be prioritized above others to enhance the solvers efficiency in navigating challenging clauses.
+dataset_configs:
+- datasets/3SAT.yaml
+task_entrypoint: PythonSubmissionTasks
+training_timeout: 1800
+use_generic_conda: true
+starter_code:
+- data/3SATTime/heuristic.py
+- data/3SATTime/evaluate.py
+- data/3SATTime/solver.py
+baseline_paths:
+- evaluate.py
+baseline_scores:
+- Time: 16.158
+  Correct: 24000
+  Incorrect: 0
+evaluation_paths:
+- evaluate.py
+evaluation_read_only: true
+memory_path: data/3SATTime/memory.json

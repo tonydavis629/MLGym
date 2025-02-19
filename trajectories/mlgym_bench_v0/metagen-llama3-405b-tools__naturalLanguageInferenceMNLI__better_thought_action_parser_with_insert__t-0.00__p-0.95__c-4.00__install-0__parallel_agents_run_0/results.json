@@ -1,0 +1,13 @@
+{
+  "agent": [
+    {
+      "validation_accuracy": 77.74834437086092
+    },
+    {
+      "validation_accuracy": 77.74834437086092
+    }
+  ],
+  "baseline": {
+    "validation_accuracy": 52.51146204788589
+  }
+}

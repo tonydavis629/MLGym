@@ -1,0 +1,29 @@
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+
+id: naturalLanguageInferenceMNLI
+name: Natural Language Inference MNLI
+description: |-
+  The goal of this task is to fine-tune a pre-trained BERT model for natural language inference. This task uses the following datasets:
+  {dataset_docs}
+
+  If a baseline is given, your task is to train a new model that improves performance on the given datasets as much as possible. If you fail to produce a valid submission artefact evaluation file will give you a score of 0.
+
+  SUBMISSION FORMAT:
+  For this task, your code should save the trained model and its config so that it can be evaluated later. Your code should generate a folder with the following structure:
+  1. `bert_mnli_model`: Use `model.save_pretrained` function to save the model's weights and config. This folder will have two files - `config.json` and `model.safetensors`.
+dataset_configs:
+- datasets/mnli.yaml
+task_entrypoint: LMSubmissionTasks
+training_timeout: 2400
+use_generic_conda: true
+starter_code:
+- data/bertMNLI/baseline.py
+- data/bertMNLI/evaluate.py
+baseline_paths:
+- baseline.py
+baseline_scores:
+- validation_accuracy: 52.51146204788589
+evaluation_paths:
+- evaluate.py
+evaluation_read_only: true
+memory_path: data/bertMNLI/memory.json

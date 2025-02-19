@@ -1,0 +1,96 @@
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+
+id: rlBreakoutMinAtar
+name: Breaktout MinAtar Gymnax
+description: |-
+  This task revolves around training an RL agent for the Breakout MinAtar environment. Please find all the details about the Breakout MinAtar environment below.
+
+  DESCRIPTION
+  Breakout MinAtar is a simplified version of the classic Atari Breakout game. The player controls a paddle at the bottom of the screen and must bounce a ball to break rows of bricks at the top. The ball travels only along diagonals and bounces off when hitting the paddle or walls. The game continues until the ball hits the bottom of the screen or the maximum number of steps is reached.
+
+  OBSERVATION SPACE
+  The observation is a ndarray with shape (10, 10, 4) where the channels correspond to the following:
+
+  Channel   Description
+    0       paddle - position of the player's paddle
+    1       ball - current position of the ball
+    2       trail - indicates the ball's direction of movement
+    3       brick - layout of the remaining bricks
+
+  Each channel contains binary values (0 or 1) indicating presence/absence of the respective element.
+
+  ACTION SPACE
+  The action space consists of 3 discrete actions:
+
+  Num    Action
+   0     no-op (no movement)
+   1     move paddle left
+   2     move paddle right
+
+  TRANSITION DYNAMICS
+  - The paddle moves left or right based on the chosen action
+  - The ball moves diagonally and bounces off walls and the paddle
+  - When the ball hits a brick, the brick is destroyed
+  - When all bricks are cleared, a new set of three rows is added
+  - The ball's direction is indicated by the trail channel
+
+  REWARD
+  - +1 reward for each brick broken
+  - No negative rewards
+
+  STARTING STATE
+  - Paddle starts at position 4
+  - Ball starts at either (3,0) or (3,9) with corresponding diagonal direction
+  - Three rows of bricks are initialized at the top (rows 1-3)
+
+  EPISODE END
+  The episode ends if either of the following happens:
+  1. Termination: The ball hits the bottom of the screen
+  2. Truncation: The length of the episode reaches max_steps_in_episode (default: 1000)
+
+  STATE SPACE
+  The state consists of:
+  - ball_y: vertical position of ball (0-9)
+  - ball_x: horizontal position of ball (0-9)
+  - ball_dir: direction of ball movement (0-3)
+  - pos: paddle position (0-9)
+  - brick_map: 10x10 binary map of bricks
+  - strike: boolean indicating if ball hit something
+  - last_y, last_x: previous ball position
+  - time: current timestep
+  - terminal: whether episode has ended
+
+  GOAL:
+  You are given a PPO implementation using a Actor Critic network architecture.
+  Your task is to improve performance of your agent in the given environment. You are encouraged to try different methods such as better RL algorithms, hyperparameter tuning, reward shaping etc.
+
+  You have to train 5 checkpoints with different model seeds. The code for training on 5 different seeds is given in the `src/train.py` file. If you are implementing a new algorithm, you only need to import the correct training function in place of `train_ppo` and keep everything the same.
+
+  Each of your checkpoint will be evaluated on 64 randomly initialized environments using 5 different seeds. Final performance metric will be average reward across all seeds, environments and model checkpoints.
+
+  If a baseline is given, your task is to train a new model that improves performance on the given task as much as possible. If you fail to produce a valid submission artefact evaluation file will give you a score of 0.
+
+  SUBMISSION FORMAT:
+  For this task, your code should save the trained model and it's config so that it can be evaluated later. Before evaluation, you workspace should include these two files:
+  1. `checkpoints/`: Your checkpoints should be saved in a folder named `checkpoints` in the `workspace` folder. You can look at `src/train.py` to see how to save the model.
+  2. `config.yaml`: This is the same config file that is being used to train the model.
+
+  CONSTRAINTS:
+  1. YOU CANNOT CHANGE THE MODEL CLASS NAME. If you do that, evaluation will give you error and you won't be able to recover.
+  2. YOU CANNOT CHANGE THE EVALUATION SCRIPT. IT IS ONLY GIVEN TO YOU FOR YOUR REFERENCE.
+task_entrypoint: ModelSubmissionTasks
+training_timeout: 1800
+requirements_path: data/rlBreakoutMinAtar/requirements.txt
+use_generic_conda: false
+starter_code:
+- data/rlBreakoutMinAtar/src
+- data/rlBreakoutMinAtar/evaluate.py
+baseline_paths:
+- src/train.py
+baseline_scores:
+- Reward Mean: 48.81718826293945
+  Reward Std: 30.35857582092285
+evaluation_paths:
+- evaluate.py
+evaluation_read_only: true
+memory_path: data/rlBreakoutMinAtar/memory.json

@@ -1,0 +1,8 @@
+jax[cuda12]
+gymnax
+flax
+optax
+tqdm
+numpy
+tensorflow_probability
+dotmap

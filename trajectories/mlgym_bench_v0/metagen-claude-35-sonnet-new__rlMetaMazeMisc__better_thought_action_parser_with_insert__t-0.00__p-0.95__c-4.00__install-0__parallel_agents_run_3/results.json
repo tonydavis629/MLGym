@@ -1,0 +1,44 @@
+{
+  "agent": [
+    {
+      "Reward Mean": 48.5625,
+      "Reward Std": 55.97428512573242
+    },
+    {
+      "Reward Mean": 39.59062576293945,
+      "Reward Std": 41.15543746948242
+    },
+    {
+      "Reward Mean": 36.265625,
+      "Reward Std": 40.809669494628906
+    },
+    {
+      "Reward Mean": 36.076560974121094,
+      "Reward Std": 35.5096435546875
+    },
+    {
+      "Reward Mean": 44.25312423706055,
+      "Reward Std": 48.322532653808594
+    },
+    {
+      "Reward Mean": 38.72343826293945,
+      "Reward Std": 44.58992004394531
+    },
+    {
+      "Reward Mean": 30.009374618530273,
+      "Reward Std": 41.03656768798828
+    },
+    {
+      "Reward Mean": 48.5625,
+      "Reward Std": 55.97428512573242
+    },
+    {
+      "Reward Mean": 48.5625,
+      "Reward Std": 55.97428512573242
+    }
+  ],
+  "baseline": {
+    "Reward Mean": 15.734375,
+    "Reward Std": 16.312131881713867
+  }
+}

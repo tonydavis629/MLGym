@@ -1,0 +1,20 @@
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+
+id: regressionHousingPrice
+name: Housing Price Prediction
+description: |-
+  You are given the train, validation and test sets of Housing Price Prediction
+  dataset and a baseline. The model performance will be calculated using two metrics
+  - RMSE and R2. Your task is to train a new model and get a 10% improvement on this
+  dataset compared to the given baseline.
+dataset_configs:
+- datasets/housingPrice.yaml
+task_entrypoint: BaseMLTask
+use_generic_conda: true
+baseline_paths:
+- data/housing-prices-dataset/baseline.py
+baseline_scores:
+- rmse: 1322212.1854550084
+  r2: 0.6541258745736527
+evaluation_paths:
+- data/housing-prices-dataset/evaluate.py

@@ -1,0 +1,6 @@
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+
+data_path: data/3SATTime/data
+description: Instances of 3 SAT problems.
+is_local: true
+name: 3 SAT Problem Dataset

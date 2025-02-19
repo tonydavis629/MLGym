@@ -1,0 +1,4 @@
+config
+tree-sitter==0.21.3 # See https://github.com/grantjenks/py-tree-sitter-languages/issues/64#issuecomment-2118048885.
+tree-sitter-languages
+uv

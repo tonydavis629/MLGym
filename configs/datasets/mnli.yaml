@@ -1,0 +1,6 @@
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+
+data_path: nyu-mll/multi_nli
+description: MNLI dataset comprising 393k training samples and 9.8k validation samples.
+is_local: false
+name: MNLI

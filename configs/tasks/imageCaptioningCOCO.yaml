@@ -1,0 +1,30 @@
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+
+id: imageCaptioningCOCO
+name: Image Captioning MSCOCO
+description: |-
+  The goal of this task is to train an image captioning model with images as the input and caption text as the output. This task uses the following datasets:
+  {dataset_docs}
+
+  If a baseline is given, your task is to train a new model that improves performance on the given dataset as much as possible. If you fail to produce a valid submission artefact evaluation file will give you a score of 0.
+
+  SUBMISSION FORMAT:
+  For this task, your code should save the predictions on test set to a file named `submission.csv`.
+dataset_configs:
+- datasets/coco.yaml
+task_entrypoint: CSVSubmissionTasks
+training_timeout: 2400
+requirements_path: data/imageCaptioningCOCO/requirements.txt
+use_generic_conda: false
+starter_code:
+- data/imageCaptioningCOCO/baseline.py
+- data/imageCaptioningCOCO/evaluate.py
+- data/imageCaptioningCOCO/sample_submission.csv
+baseline_paths:
+- baseline.py
+baseline_scores:
+- BLEU Score: 0.2793602467563585
+evaluation_paths:
+- evaluate.py
+evaluation_read_only: true
+memory_path: data/imageCaptioningCOCO/memory.json

@@ -1,0 +1,6 @@
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+
+data_path: data/imageCaptioningCOCO/data
+description: MS COCO image captioning dataset
+is_local: true
+name: COCODataset

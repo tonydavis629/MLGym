@@ -1,0 +1,87 @@
+# Choosing a build backend:
+[build-system]
+requires = ["setuptools"] # REQUIRED if [build-system] table is used
+build-backend = "setuptools.build_meta" # If not defined, then legacy behavior can happen.
+
+[project]
+name = "mlgym"
+dynamic = ["version", "dependencies"]
+description = "The official MLGym package - an open source environment for training and evaluating language models as ML Engineers."
+readme = "README.md"
+requires-python = ">=3.11"
+license = {file = "LICENSE"}
+keywords = ["nlp", "agents", "code", "ml"]
+authors = [
+    {name = "Deepak Nathani", email = "dnathani@ucsb.edu"},
+    {name = "Roberta Raileanu", email = "raileanu@meta.com"}
+]
+
+# Classifiers help users find your project by categorizing it.
+classifiers = [
+    # How mature is this project? Common values are
+    # 3 - Alpha, 4 - Beta, 5 - Production/Stable
+    "Operating System :: OS Independent",
+    # Indicate who your project is intended for
+    "Intended Audience :: Developers",
+    # Pick your license as you wish
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3 :: Only",
+]
+
+[project.optional-dependencies]
+dev = [
+    "mkdocs-material",
+    "mkdocs-glightbox",
+    "mkdocs-include-markdown-plugin",
+    "mkdocstrings[python]>=0.18",
+    "pytest",
+    "pytest-cov",
+    "pipx",
+    "pre-commit",
+]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.dynamic]
+version = {attr = "mlgym.__version__"}
+dependencies = {file = ["requirements.txt"]}
+
+[tool.setuptools.packages.find]
+where = ["."]
+namespaces = false
+
+[project.urls]
+"Source" = "https://github.com/fairinternal/mlgym"
+
+[tool.black]
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".git",
+    ".git-rewrite",
+    "_build",
+    "build",
+    "dist",
+    ".eggs",
+    ".ipynb_checkpoints",
+    ".vscode",
+    # ---- project specific ----
+    "config/commands",
+]
+line-length = 120
+indent-width = 4
+
+target-version = "py311"
+
+[tool.pylint]
+disable= [
+    "W0718", # broad-exception-caught
+    "W1203", # logging-fstring-interpolation
+]

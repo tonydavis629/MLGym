@@ -1,0 +1,7 @@
+Model,Best AUP,Last AUP
+llama3-405b-tools,1.813,1.838
+gpt4o2,1.799,1.828
+claude-35-sonnet-new,1.941,1.935
+gemini-15-pro,1.939,1.924
+gpt-o1,1.949,1.976
+baseline,1.752,1.779

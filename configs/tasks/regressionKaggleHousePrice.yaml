@@ -1,0 +1,29 @@
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+
+id: regressionKaggleHousePrice
+name: Kaggle Housing Price Prediction
+description: |-
+  You are given the train, validation and test sets of Housing Price Prediction dataset and a baseline. The model performance will be calculated using two metrics - RMSE and R2. This task uses the following dataset(s):
+  {dataset_docs}
+
+  If a baseline is given, your task is to train a new model that improves performance on the given dataset as much as possible. If you fail to produce a valid submission artefact evaluation file will give you a score of 0.
+
+  SUBMISSION FORMAT:
+  For this task, your code should save the predictions on test set to a file named `submission.csv`.
+dataset_configs:
+- datasets/kaggleHousePrice.yaml
+task_entrypoint: CSVSubmissionTasks
+training_timeout: 1800
+use_generic_conda: true
+starter_code:
+- data/regressionKaggleHousePrice/baseline.py
+- data/regressionKaggleHousePrice/evaluate.py
+baseline_paths:
+- baseline.py
+baseline_scores:
+- rmse: 30340.111853413255
+  r2: 0.8799891474739243
+evaluation_paths:
+- evaluate.py
+evaluation_read_only: true
+memory_path: data/regressionKaggleHousePrice/memory.json
