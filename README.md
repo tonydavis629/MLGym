@@ -5,7 +5,7 @@
 1. Clone and install dependencies
 
     ```bash
-    git clone git@github.com:fairinternal/MLGYM.git
+    git clone git@github.com:facebookresearch/MLGYM.git
     cd MLGYM
     conda create -n mlgym python=3.11
     pip install -e .
