@@ -98,7 +98,7 @@ python run.py \
   --aliases_file ./docker/aliases.sh
 ```
 
-### Using Podman (on DevGPU)
+### Using Podman
 
 ```bash
 python run.py \
