@@ -735,7 +735,7 @@ with st.sidebar:
 
     st.markdown("### Select Task")
     
-    trajectory_dir = "trajectories"
+    trajectory_dir = "trajectories/mlgym_bench_v0"
     trajectories = [
         {
             "name": "Image Classification (CIFAR-10)",
