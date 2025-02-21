@@ -1,5 +1,22 @@
 # MLGYM: A New Framework and Benchmark for Advancing AI Research Agents
 
+
+This is the first Gym environment for machine learning (ML) tasks, enabling research on reinforcement learning (RL) algorithms for training such agents. MLGym-bench consists of 13 diverse and open-ended AI research tasks from diverse domains such as computer vision, natural language processing, reinforcement learning, and game theory. Solving these tasks requires real-world AI research skills such as generating new ideas and hypotheses, creating and processing data, implementing ML methods, training models, running experiments, analyzing the results, and iterating through this process to improve on a given task. 
+![image info](./docs/mlgym.png)
+
+Cite us:
+```
+@misc{nathani2025mlgymnewframeworkbenchmark,
+      title={MLGym: A New Framework and Benchmark for Advancing AI Research Agents}, 
+      author={Deepak Nathani and Lovish Madaan and Nicholas Roberts and Nikolay Bashlykov and Ajay Menon and Vincent Moens and Amar Budhiraja and Despoina Magka and Vladislav Vorotilov and Gaurav Chaurasia and Dieuwke Hupkes and Ricardo Silveira Cabral and Tatiana Shavrina and Jakob Foerster and Yoram Bachrach and William Yang Wang and Roberta Raileanu},
+      year={2025},
+      eprint={2502.14499},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2502.14499}, 
+}
+```
+
 ## Setup
 
 1. Clone and install dependencies
