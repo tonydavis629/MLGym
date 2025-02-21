@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta" # If not defined, then legacy behavior c
 [project]
 name = "mlgym"
 dynamic = ["version", "dependencies"]
-description = "The official MLGym package - an open source environment for training and evaluating language models as ML Engineers."
+description = "The official MLGym package - A framework for benchmarking and training AI research agents."
 readme = "README.md"
 requires-python = ">=3.11"
 license = {file = "LICENSE"}
@@ -24,7 +24,7 @@ classifiers = [
     # Indicate who your project is intended for
     "Intended Audience :: Developers",
     # Pick your license as you wish
-    "License :: OSI Approved :: MIT License",
+    "License :: Creative Commons :: Attribution-NonCommercial 4.0 International",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3 :: Only",
 ]
@@ -53,7 +53,7 @@ where = ["."]
 namespaces = false
 
 [project.urls]
-"Source" = "https://github.com/fairinternal/mlgym"
+"Source" = "https://github.com/facebookresearch/MLGym"
 
 [tool.black]
 # Exclude a variety of commonly ignored directories.
@@ -73,7 +73,7 @@ exclude = [
     ".ipynb_checkpoints",
     ".vscode",
     # ---- project specific ----
-    "config/commands",
+    "tools",
 ]
 line-length = 120
 indent-width = 4

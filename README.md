@@ -1,34 +1,47 @@
-# MLGYM: A New Framework and Benchmark for Advancing AI Research Agents
+<p align="center">
+    <img src="./assets/logos/mlgym_logo.png" height="300" width="600" alt="MLGym Logo">
+</p>
 
+<p align="center">
+  <a href="https://creativecommons.org/licenses/by-nc/4.0/"><img src="https://img.shields.io/badge/License-CC_BY--NC_4.0-lightgrey.svg" /></a>
+  <!-- Someone else has pypi package with the same name -->
+  <!-- <a href="https://pepy.tech/project/mlgym"><img src="https://static.pepy.tech/personalized-badge/minihack?period=total&units=international_system&left_color=black&right_color=red&left_text=Downloads" /></a> -->
+  <!-- <a href="https://github.com/facebookresearch/minihack/actions/workflows/test_and_deploy.yml"><img src="https://github.com/facebookresearch/minihack/actions/workflows/test_and_deploy.yml/badge.svg?branch=main" /></a> -->
+  <a href="https://arxiv.org/abs/2502.14499"><img src="https://img.shields.io/badge/arXiv-2502.14499-b31b1b.svg"/></a>
+ </p>
 
-This is the first Gym environment for machine learning (ML) tasks, enabling research on reinforcement learning (RL) algorithms for training such agents. MLGym-bench consists of 13 diverse and open-ended AI research tasks from diverse domains such as computer vision, natural language processing, reinforcement learning, and game theory. Solving these tasks requires real-world AI research skills such as generating new ideas and hypotheses, creating and processing data, implementing ML methods, training models, running experiments, analyzing the results, and iterating through this process to improve on a given task. 
-![image info](./docs/mlgym.png)
+## Table of contents
 
-Cite us:
-```
-@misc{nathani2025mlgymnewframeworkbenchmark,
-      title={MLGym: A New Framework and Benchmark for Advancing AI Research Agents}, 
-      author={Deepak Nathani and Lovish Madaan and Nicholas Roberts and Nikolay Bashlykov and Ajay Menon and Vincent Moens and Amar Budhiraja and Despoina Magka and Vladislav Vorotilov and Gaurav Chaurasia and Dieuwke Hupkes and Ricardo Silveira Cabral and Tatiana Shavrina and Jakob Foerster and Yoram Bachrach and William Yang Wang and Roberta Raileanu},
-      year={2025},
-      eprint={2502.14499},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL},
-      url={https://arxiv.org/abs/2502.14499}, 
-}
-```
+* [Introduction](#introduction)
+* [Installation](#installation)
+* [Quick Start](#quick-start)
+* [Trajectory Visualizer](#trajectory-visualizer)
+* [Contributions and Maintenance](#contributions-and-maintenance)
+* [License](#license)
 
-## Setup
+## Introduction
+
+This is the first Gym environment for machine learning (ML) tasks, enabling research on reinforcement learning (RL) algorithms for training such agents. <span style="font-variant:small-caps;">MLGym</span>-Bench consists of 13 diverse and open-ended AI research tasks from diverse domains such as computer vision, natural language processing, reinforcement learning, and game theory. Solving these tasks requires real-world AI research skills such as generating new ideas and hypotheses, creating and processing data, implementing ML methods, training models, running experiments, analyzing the results, and iterating through this process to improve on a given task.
+![image info](./assets/figs/mlgym.png)
+
+> [!WARNING]
+> Meta <span style="font-variant:small-caps;">MLGym</span> is currently an experimental framework intended for benchmarking AI Research Agents. It is under heavy development. Please except major changes to the design.
+>
+> The primary goal of <span style="font-variant:small-caps;">MLGym</span> is to expand the selection of AI research tasks for benchmarking the LLM Agents and implementing RL algorithms to train LLMs in a research environment.
+> `main` branch will always contain the latest stable release and all breaking changes will be announced in the [release notes](./CHANGELOG.md).
+
+## Installation
 
 1. Clone and install dependencies
 
     ```bash
-    git clone git@github.com:facebookresearch/MLGYM.git
-    cd MLGYM
+    git clone git@github.com:facebookresearch/MLGym.git
+    cd MLGym
     conda create -n mlgym python=3.11
     pip install -e .
     ```
 
-2. Create a `.env` file in the MLGYM directory (`MLGYM/.env`) to save all the environment variables including API keys.
+2. Create a `.env` file in the MLGym directory (`MLGym/.env`) to save all the environment variables including API keys.
 
     ```bash
     # Env variables
@@ -85,8 +98,6 @@ Cite us:
 
 11. Check that GPUs are available in the docker container using `nvidia-smi`.
 
-12. Download data files form [this](https://drive.google.com/drive/folders/1jVnBRHbSinIpDbhrrVkcbu0akrbFFLrg?usp=drive_link) google drive link. Copy the contents of each folder from google drive to the corresponding data folder: `MLGYM/data/<TASK_NAME>/`.
-
 ### Troubleshooting
 
 If you get Nvidia CDI spec errors on linux (eg. `Error: setting up CDI devices: unresolvable CDI devices nvidia.com/gpu=all`), run these additional commands.
@@ -97,9 +108,9 @@ sudo nvidia-ctk cdi generate --output=/etc/cdi/nvidia.yaml
 sudo touch /etc/containers/nodocker
 ```
 
-## Run your first Agent
+## Quick Start
 
-### Using Docker
+### Docker
 
 ```bash
 python run.py \
@@ -110,12 +121,11 @@ python run.py \
   --config_file configs/agents/default.yaml \
   --temp 1 \
   --gpus 0 \
-  --gpus_per_agent 1 \
   --max_steps 50 \
   --aliases_file ./docker/aliases.sh
 ```
 
-### Using Podman
+### Podman
 
 ```bash
 python run.py \
@@ -126,28 +136,50 @@ python run.py \
   --config_file configs/agents/default.yaml \
   --temp 1 \
   --gpus 0 \
-  --gpus_per_agent 1 \
   --max_steps 50 \
   --aliases_file ./docker/aliases.sh
 ```
 
 To see a full list of flags, please run `python run.py --help`.
 
+> [!NOTE]
+> A detailed documentation for all parts of the <span style="font-variant:small-caps;">MLGym</span> framework is under construction. Please stay tuned!
+
 ## Trajectory Visualizer
 
-MLGym provides a Web UI to inspect the agent trajectories.
+<span style="font-variant:small-caps;">MLGym</span> provides a Web UI to inspect the agent trajectories.
 
 ```bash
 streamlit run demo/trajectory_visualizer.py -- --trajectory_dir <absolute_path_to_trajectories>
 
 # An example
-streamlit run demo/trajectory_visualizer.py -- --trajectory_dir $HOME/Projects/MLGYM/trajectories/mlgym_bench_v0
+streamlit run demo/trajectory_visualizer.py -- --trajectory_dir $HOME/Projects/MLGym/trajectories/mlgym_bench_v0
 ```
 
-To run the demo for MLGym, use the following command:
+To run the demo for <span style="font-variant:small-caps;">MLGym</span>, use the following command:
 
 ```bash
 streamlit run demo/demo.py
+```
+
+## Contributions and Maintenance
+
+<span style="font-variant:small-caps;">MLGym</span> was built and is maintained by [GenAI at Meta](https://ai.meta.com/) and [UCSB NLP](http://nlp.cs.ucsb.edu/). We welcome contributions to <span style="font-variant:small-caps;">MLGym</span>. If you are interested in contributing, please see [this document](./CONTRIBUTING.md). Our maintenance plan can be found [here](./MAINTENANCE.md).
+
+## Citation
+
+If you find this work helpful, please consider citing us using the following:
+
+```tex
+@misc{nathani2025mlgymnewframeworkbenchmark,
+      title={MLGym: A New Framework and Benchmark for Advancing AI Research Agents}, 
+      author={Deepak Nathani and Lovish Madaan and Nicholas Roberts and Nikolay Bashlykov and Ajay Menon and Vincent Moens and Amar Budhiraja and Despoina Magka and Vladislav Vorotilov and Gaurav Chaurasia and Dieuwke Hupkes and Ricardo Silveira Cabral and Tatiana Shavrina and Jakob Foerster and Yoram Bachrach and William Yang Wang and Roberta Raileanu},
+      year={2025},
+      eprint={2502.14499},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2502.14499}, 
+}
 ```
 
 ## License
